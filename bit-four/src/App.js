@@ -12,9 +12,9 @@ class App extends Component {
   state = {
     msg: { title:'bithumb', sub:'bitCamp!!!' },
     lists: [ 
-      { id:1, title:'aaa', desc:'apple is a best fruit' },
-      { id:2, title:'bbb', desc:'banana is a best fruit' },
-      { id:3, title:'ccc', desc:'cherry is a best fruit' },
+      { id:1, title:'rain', desc:'apple is a best fruit' },
+      { id:2, title:'snow', desc:'banana is a best fruit' },
+      { id:3, title:'wind', desc:'cherry is a best fruit' },
     ],
   }
 
