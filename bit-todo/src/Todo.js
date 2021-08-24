@@ -21,10 +21,10 @@ const Todo = (props) => {
 
     useEffect(()=>{
         localStorage.setItem("todoList", JSON.stringify(todo.todoList));
+        console.log(todo.todoList);
     },[todo]);
 
     const handleInputKeyPress = (event) => { // 추가 엔터 눌렀을 때
-        event.preventDefault();
         if(event.key === 'Enter'){
             // HTML5에서 제공되는 local Storage = 최대 5MB저장 setItem()함수로 추가
             setTodo(prev=>({
@@ -64,16 +64,19 @@ const Todo = (props) => {
         inputRef.current.value = '';
     }
 
+    const keyChange = (e) =>{
+        // sconsole.log(e.)
+    }
+
     return(
         <Container>
             <InputDiv>
             <Input
             ref={inputRef}
             placeholder='오늘할일' 
-            onKeyPress={handleInputKeyPress} 
-            >
-
-            </Input>
+            onKeyPress={handleInputKeyPress}
+            onChange={keyChange}
+            ></Input>
             {
                 todo.updateCk === 1 ? <UpdatdBtn onClick={()=>handleUpdate(todo.updateIdx)}>수정</UpdatdBtn> : ''
                 }   
