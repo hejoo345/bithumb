@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 class TodoRow  extends React.Component{
     shouldComponentUpdate(nextProps, nextState) {
-        if (this.props.todo === nextProps.todo) {
+        if (this.props === nextProps) {
           return false;
         }
         return true;
