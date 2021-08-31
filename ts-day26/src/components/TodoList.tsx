@@ -9,14 +9,14 @@ interface ITodoItem{
     idx: number,
     todo: string,
     isDelete: boolean,
-    // onDelete: (num: number) => void
+    onDelete?: (num: number) => void
 }
 interface ITodoList{
     todoList : ITodoItem[];
 }
 
 const TodoList:React.FC = (props) => {
-    const inputRef = useRef<HTMLInputElement>(null);
+    // const inputRef = useRef<HTMLInputElement>(null);
     const [iInput, setiInput] = useState<IInput>({ input: '' });
     const [iTodoitem, setTodoItem] = useState<ITodoItem>({
         idx: 0,
@@ -28,16 +28,20 @@ const TodoList:React.FC = (props) => {
     });
 
     useEffect(()=>{
+        console.log('useEffect 마운트 될 때');
+    },[])
+
+    useEffect(()=>{
         console.log('item항목 업데이트 할 때 발생');
         setTodoList(prev=>({
             todoList: [...prev.todoList, iTodoitem]
         }));
     },[iTodoitem])
 
-    const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInput = (e: React.ChangeEvent<HTMLInputElement>):void => {
         setiInput({ input: e.target.value });
     }
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>):void => {
         e.preventDefault();
         setTodoItem(prev=>({
             ...prev,
@@ -45,14 +49,23 @@ const TodoList:React.FC = (props) => {
             todo: iInput.input,
             isDelete: false,
         }));
-       if(inputRef.current) inputRef.current.value='';
+    //    if(inputRef.current) inputRef.current.value='';
+        setiInput({input: ''});
     }
 
     const onDelete = (idx: number) => {
-        console.log(`${idx}삭제`);
+        const newTodo: ITodoItem[] = iTodoList.todoList.filter(todo=>todo.idx !== idx);
+        setTodoList({todoList : newTodo})
     }
-    const onTodoList = () => {
-    }
+    const onTodoList = iTodoList.todoList.map((todo, idx)=>(
+        <div key={idx}>
+            <TodoItem
+            idx={todo.idx}
+            todo={todo.todo}
+            isDelete={todo.isDelete}
+            onDelete={onDelete}></TodoItem>
+        </div>
+    ))
 
     return (
             <div>
@@ -60,22 +73,14 @@ const TodoList:React.FC = (props) => {
                 <div>
                     <form onSubmit={onSubmit}>
                         <input type='text' 
-                        ref={inputRef}
-                        defaultValue={iInput.input}
+                        // ref={inputRef}
+                        value={iInput.input}
                         onChange={handleInput}></input>
                         <button type='submit'>추가</button>
                     </form>
-
-                    {
-                        iTodoList.todoList.map(todo=>(
-                            <TodoItem
-                            key={todo.idx}
-                            idx={todo.idx}
-                            todo={todo.todo}
-                            isDelete={todo.isDelete}
-                            onDelete={onDelete}></TodoItem>
-                        ))
-                        }
+                    <div>
+                        {onTodoList}
+                    </div>
                 </div>
             </div>
     )};

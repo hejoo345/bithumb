@@ -10,11 +10,10 @@ const TodoItem:React.FC<List> = ({idx, todo, onDelete}) => {
     const handleDelete = () =>{
         onDelete(idx);
     }
-    const mk = { fontSize: '16px', color: 'hotpink'};
     return(
             <div>
                 <span>{todo}</span>
-                <button style={mk} onClick={handleDelete}>삭제</button>
+                <button onClick={handleDelete}>삭제</button>
             </div>
     )};
 
