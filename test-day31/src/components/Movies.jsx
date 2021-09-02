@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/Movie.css';
+import PropTypes from 'Prop-types';
 
 const Movies = ({id, year, title, summary, poster, genres}) => {
     return(
@@ -11,5 +12,12 @@ const Movies = ({id, year, title, summary, poster, genres}) => {
                 {summary}
             </div>
     )};
+
+    Movies.PropTypes = {
+        year: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        summary: PropTypes.string.isRequired,
+        genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+    }
 
 export default Movies;
