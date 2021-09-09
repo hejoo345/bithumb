@@ -1,18 +1,39 @@
 {
-    "data": [
-        {
-            "id": 1,
-            "bno": 1,
-            "bname": "nct",
-            "btitle": "127",
-            "bwdate": "2021-09-01"
-        },
-        {
-            "id": 2,
-            "bno": 2,
-            "bname": "nct",
-            "btitle": "dream",
-            "bwdate": "2021-09-01"
-        }
-    ]
+  "data": [
+    {
+      "bno": 1,
+      "bname": "ncta",
+      "btitle": "127a",
+      "bwdate": "2021-09-09T06:25:00.809Z",
+      "id": 1
+    },
+    {
+      "id": 3,
+      "bno": 3,
+      "bname": "dddd",
+      "btitle": "dddddd",
+      "bwdate": "2021. 9. 9."
+    },
+    {
+      "id": 4,
+      "bno": 4,
+      "bname": "ffff",
+      "btitle": "fffff",
+      "bwdate": "2021. 9. 9."
+    },
+    {
+      "id": 5,
+      "bno": 5,
+      "bname": "aaaaa",
+      "btitle": "aaaaaa",
+      "bwdate": "2021. 9. 9."
+    },
+    {
+      "id": 6,
+      "bno": 6,
+      "bname": "aaaaa",
+      "btitle": "ffa",
+      "bwdate": "2021. 9. 9."
+    }
+  ]
 }

@@ -28,7 +28,7 @@ export function* searchDataSaga(){
 // 저장 Saga
 export function* saveDataSaga({payload}){
     const response = yield call(API.saveData, payload);
-    if(response !== nul && (response.status === 201 || response.status === 200)){
+    if(response !== null && (response.status === 201 || response.status === 200)){
         yield put(searchDataAsync());
     }
 }
@@ -49,7 +49,7 @@ const initialState = {
 // 리덕스 Toolkit Reducer
 export default createReducer(initialState, {
     [SEARCH_DATA]: (state, {payload: data}) => {
-        state.boards.length = 0; // 이건 왜 하는거지
+        state.boards.length = 0; // boards을 빈배열로 만듦
         for(let i = 0; i < data.length; i++){
             state.boards.push({
                 id: data[i].id,

@@ -4,11 +4,12 @@ import { TextField, Button } from '@material-ui/core';
 
 const BoardNew = ({ changeInput, inputData, onSaveButtonClick, resetForm, onSearchButtonClick }) => {
 
-    const { handleSubmit, register, formState: { errors } } = useForm(); // useForm 의 handleSubmit 가져옴.
+    const { handleSubmit, register, reset, formState: { errors } } = useForm(); // useForm 의 handleSubmit 가져옴.
 
-    const saveBtnClick = (data) => { // preventDefault() 제거
+    const saveBtnClick = (data) => { 
         console.log('saveBtnClick: saveBtnClick:',data);
         onSaveButtonClick(inputData);
+        reset({bname:'', btitle:''});
         resetForm();
     }
     

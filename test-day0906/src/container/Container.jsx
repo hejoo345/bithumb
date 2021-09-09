@@ -25,7 +25,7 @@ const Container = (props) => {
     }
 
     const onSaveButtonClick = (data) => {
-        if(lastId === 0) {
+        if(lastId === 0) { // 출력할 데이터 없을 때
             alert('조회 버튼클릭 해서 데이터 출력 합니다');
             console.log('lastId = ', lastId);
             return 
@@ -54,6 +54,7 @@ const Container = (props) => {
         })
     }
 
+    // 입력 폼 초기화
     const resetForm = () => {
         setInputData({
             bno: '',
@@ -65,8 +66,6 @@ const Container = (props) => {
 
     return(
         <div className='App'>
-            <img src='./images/hydran.png' alt='hydran' width='500'  height='150' />
-            <p></p>
             <div>
                 <Table>
                     <TableHead>
